@@ -1,5 +1,5 @@
 ﻿name: My First Workflow
-run-name : Run Name
+run-name : Run Name ${{ github.sha}} / ${{ github.workflow_sha}}
 on: push
 
 jobs:
