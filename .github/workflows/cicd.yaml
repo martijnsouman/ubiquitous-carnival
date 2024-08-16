@@ -6,6 +6,12 @@ jobs:
     build:
         name: Build job
         runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout files
+              uses: actions/checkout@v4
+
+        
   
 
   
