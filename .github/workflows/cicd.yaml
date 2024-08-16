@@ -1,6 +1,11 @@
 ﻿name: My First Workflow
 run-name : Run Name
 on: push
+
+jobs:
+    build:
+        name: Build job
+        runs-on: ubuntu-latest
   
 
   
