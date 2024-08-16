@@ -20,8 +20,15 @@ jobs:
               run: ls
 
 
-            - name: Build container
+            - name: Setup container
               uses: docker/setup-buildx-action@v3
+            
+            - name: Build
+              uses: docker/build-push-action@v4
+              with:
+                context: .
+                tags: pinda/kaas:latest
+                push: false
                 
 
 
