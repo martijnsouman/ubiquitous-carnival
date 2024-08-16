@@ -6,6 +6,10 @@ jobs:
     build:
         name: Build job
         runs-on: ubuntu-latest
+        env:
+          A : 1234
+          B : 4567
+
 
         steps:
             - name: Checkout files
