@@ -8,11 +8,14 @@ jobs:
   foo:
     env: 
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      CONTEXT: ${{ toJson(github) }}
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Print environment
         run: printenv
+      - name: Print github
+        run: echo $CONTEXT
   bar:
     env: 
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
