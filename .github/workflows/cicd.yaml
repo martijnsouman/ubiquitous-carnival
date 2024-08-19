@@ -3,38 +3,26 @@ run-name : Run Name ${{ github.run_id}} / ${{ github.run_attempt}} / ${{ github.
 on: push
 
 jobs:
-    build:
-      
-        name: Build job
-        permissions: write-all
-        runs-on: ubuntu-latest
-        services:
-          martijn:
-            
-            image: ghcr.io/martijnsouman/martijn:latest
-            credentials:
-              username: ${{ github.repository_owner }}
-              password: ${{ secrets.TOKEN }}
-        steps:
-            - name: Checkout files
-              uses: actions/checkout@v4
-              with: 
-                fetch-depth: 0 
-            - name: Show files
-              run: ls
-            - name: Dotnet
-              uses: actions/setup-dotnet@v4
-              with:
-                dotnet-version: |
-                  6.0
-                  8.0
-            - name: Restore
-              run: dotnet restore
-            - name: Build
-              run: dotnet build
-            - name: Publish
-              run: dotnet publish
+  foo:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print environment
+        run: printenv
+  bar:
+    runs-on: ubuntu-latest
+    container: 
+      image: mcr.microsoft.com/sdk:latest
+    permissions: write-all
+    steps:
+      - run: printenv  
 
+  foobar:
+    runs-on: ubuntu-latest
+    needs: [foo, bar]
+    steps:
+      - run: echo En klaar
+    
 
 
 
