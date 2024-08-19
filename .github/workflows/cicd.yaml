@@ -6,7 +6,8 @@ jobs:
     build:
       
         name: Build job
-        permissions: 
+        permissions:
+          actions: read 
           packages: read
         runs-on: ubuntu-latest
         services:
