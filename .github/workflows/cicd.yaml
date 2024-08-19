@@ -4,8 +4,17 @@ on: push
 
 jobs:
     build:
+      
         name: Build job
+        permissions: 
+          packages: read
         runs-on: ubuntu-latest
+        services:
+          martijn:
+            image: ghcr.io/martijnsouman/martijn:latest
+            credentials:
+              username: ${{ github.repository_owner}}
+              password: $GITHUB_TOKEN
         steps:
             - name: Checkout files
               uses: actions/checkout@v4
