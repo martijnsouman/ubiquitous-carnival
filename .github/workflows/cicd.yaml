@@ -3,16 +3,22 @@ run-name : Run Name ${{ github.run_id}} / ${{ github.run_attempt}} / ${{ github.
 on: push
 
 jobs:
+ 
+
   foo:
+    env: 
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Print environment
         run: printenv
   bar:
+    env: 
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
     runs-on: ubuntu-latest
     container: 
-      image: mcr.microsoft.com/sdk:latest
+      image: mcr.microsoft.com/dotnet/sdk:latest
     permissions: write-all
     steps:
       - run: printenv  
